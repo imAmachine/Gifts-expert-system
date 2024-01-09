@@ -6,11 +6,12 @@ class CLI:
         self.engine = engine  # движок экспертной системы, с которым взаимодействует интерфейс
         self.menu = self.__init_menu()  # установка родительского меню
 
-    def start_cli(self):
+    def run_menu(self):
         self.menu.run_menu()  # старт основного цикла меню
 
     def __init_menu(self):
-        return Menu()
+        choices = { }
+        return Menu(choices, parent_menu=None)
 
 
 class MainMenuCLI(CLI):
@@ -20,10 +21,10 @@ class MainMenuCLI(CLI):
 
     def __init_menu(self):
         choices = {
-            'Пользователь': UserCLI(engine=self.engine, parent_menu=self).start_cli,
-            'Эксперт': ExpertCLI(engine=self.engine, parent_menu=self).start_cli
+            'Пользователь': UserCLI(engine=self.engine, parent_menu=self).run_menu,
+            'Эксперт': ExpertCLI(engine=self.engine, parent_menu=self).run_menu
         }
-        return Menu(choices, self.menu)
+        return Menu(choices, None)
 
 
 class UserCLI(CLI):

@@ -9,7 +9,7 @@ class Menu:
     def _display_menu(self):
         for idx, (item_name, _) in enumerate(zip(self.menu_items.keys(), self.menu_items.values()), start=1):
             print(f'{idx} - {item_name}')
-        print('Нажмите ESC, чтобы выйти или вернуться на пункт выше.')
+        print('Нажмите ESC, чтобы вернуться назад.')
         print('Выберите пункт меню...')
 
     def _execute_item_action(self, action):
