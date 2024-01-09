@@ -31,7 +31,7 @@ class ExpertEngine:
                     accepted_rules.append(eval('gift_property == user_answer'))
 
                 if all(accepted_rules):
-                    recommendations.append(gift["name"])
+                    recommendations.append(gift)
 
         return recommendations
 
@@ -51,9 +51,9 @@ class ExpertEngine:
         self._rules["rules"] = new_rules_list
         return json_update('../base/rules.json', self._rules)
 
-    def add_rule(self, id: int, question: str, property_name: str, values: list) -> bool:
+    def add_rule(self, rule_id: int, question: str, property_name: str, values: list) -> bool:
         new_rule = {
-            "id": id,
+            "id": rule_id,
             "property": property_name,
             "values": values,
             "question": question

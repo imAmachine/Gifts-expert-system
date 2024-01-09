@@ -2,14 +2,16 @@ import keyboard
 
 
 class Menu:
-    def __init__(self, menu_items: dict = None, parent_menu=None):
+    def __init__(self, title, menu_items: dict = None, parent_menu=None):
         self.menu_items = menu_items
         self.parent_menu = parent_menu
+        self.title = title
 
     def _display_menu(self):
+        print(f'\n=========={self.title}==========')
         for idx, (item_name, _) in enumerate(zip(self.menu_items.keys(), self.menu_items.values()), start=1):
             print(f'{idx} - {item_name}')
-        print('Нажмите ESC, чтобы вернуться назад.')
+        print('ESC - чтобы вернуться назад')
         print('Выберите пункт меню...')
 
     def _execute_item_action(self, action):
