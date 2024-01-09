@@ -28,4 +28,5 @@ class ExpertCLI(CLI):
         )
 
     def __remove_rule(self):
-        self.engine.remove_rule(input('Введите id: '))
+        rule_id = int(input('Введите id: '))
+        self.engine.remove_rule(rule_id)
