@@ -1,11 +1,12 @@
 from models.CLI.CLI import CLI
-from models.menu import Menu
 
 
 class UserCLI(CLI):
-    def __init__(self, title, engine, parent_menu):
-        super().__init__(engine, title, parent_menu)
-        self.menu = self.__init_menu(title, parent_menu)
+    def __init__(self, title, engine, parent_cli):
+        super().__init__(engine, title, parent_cli)
+        self.menu_items = self.__init_menu()
+        self.title = title
+        self.parent_cli = parent_cli
 
     def __run_user_ask_method(self, method='ask'):
         if method == 'ask':
@@ -20,9 +21,9 @@ class UserCLI(CLI):
             result += f'{idx + 1} - {rec["name"]}\n'
         print(result)
 
-    def __init_menu(self, title, parent_menu):
+    def __init_menu(self):
         choices = {
             "Провести опрос": lambda: self.__run_user_ask_method('load'),
             "Показать рекомендации": self.__show_recommendations
         }
-        return Menu(title, choices, parent_menu)
+        return choices
