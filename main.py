@@ -30,7 +30,7 @@ def init_user_menu(engine, parent_menu):
 
 def init_expert_menu(engine, parent_menu):
     choices = {
-        "получить правила": lambda: engine.get_rules(),
+        "получить правила": lambda: print('id - property - values - question\n' + '\n'.join(engine.get_rules())),
         "добавить правила": lambda:
             engine.add_rule(
                 int(input('Введите id: ')),

@@ -35,8 +35,16 @@ class ExpertEngine:
 
         return recommendations
 
-    def get_rules(self) -> None:
-        return self._rules["rules"]
+    def get_rules(self) -> list:
+        result = list()
+        for rule in self._rules["rules"]:
+            rule_id = rule['id']
+            property_name = rule['property']
+            values = rule['values']
+            question = rule['question']
+            rule_line = f'{rule_id} - {property_name} - {values} - {question}'
+            result.append(rule_line)
+        return result
 
     def remove_rule(self, id_to_remove) -> bool:
         new_rules_list = [rule for rule in self._rules["rules"] if rule["id"] != id_to_remove]
