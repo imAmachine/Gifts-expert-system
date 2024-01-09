@@ -1,0 +1,185 @@
+{
+  "rules": [
+    {
+      "id": 1,
+      "property": "close_person",
+      "values": [
+        "да",
+        "нет"
+      ],
+      "question": "Близкий ли человек?"
+    },
+    {
+      "id": 2,
+      "property": "budget",
+      "values": [
+        ">5000",
+        "<5000"
+      ],
+      "question": "Бюджет подарка?"
+    },
+    {
+      "id": 3,
+      "property": "enjoys_sport",
+      "values": [
+        "да",
+        "нет"
+      ],
+      "question": "Занимается ли человек спортом?"
+    },
+    {
+      "id": 4,
+      "property": "have_pets",
+      "values": [
+        "да",
+        "нет"
+      ],
+      "question": "Есть ли у человека домашние животные?"
+    },
+    {
+      "id": 5,
+      "property": "age_group",
+      "values": [
+        "подростки",
+        "взрослые"
+      ],
+      "question": "Возрастная группа человека?"
+    },
+    {
+      "id": 6,
+      "property": "loves_books",
+      "values": [
+        "да",
+        "нет"
+      ],
+      "question": "Любит ли человек книги?"
+    },
+    {
+      "id": 7,
+      "property": "in_relationship",
+      "values": [
+        "да",
+        "нет"
+      ],
+      "question": "Состоит ли человек в отношениях?"
+    },
+    {
+      "id": 8,
+      "property": "like_travel",
+      "values": [
+        "да",
+        "нет"
+      ],
+      "question": "Нравится ли путешествовать человеку?"
+    },
+    {
+      "id": 9,
+      "property": "studies",
+      "values": [
+        "да",
+        "нет"
+      ],
+      "question": "Учится ли человек?"
+    },
+    {
+      "id": 10,
+      "property": "loves_cook",
+      "values": [
+        "да",
+        "нет"
+      ],
+      "question": "Любит ли человек готовить?"
+    },
+    {
+      "id": 11,
+      "property": "enjoys_creative_activities",
+      "values": [
+        "да",
+        "нет"
+      ],
+      "question": "Увлекается ли человек творческой деятельностью?"
+    },
+    {
+      "id": 12,
+      "property": "cares_about_beauty",
+      "values": [
+        "да",
+        "нет"
+      ],
+      "question": "Заботится ли человек о собственной красоте?"
+    },
+    {
+      "id": 13,
+      "property": "enjoys_music",
+      "values": [
+        "да",
+        "нет"
+      ],
+      "question": "Увлекается ли человек музыкой?"
+    },
+    {
+      "id": 14,
+      "property": "attitude_towards_studies",
+      "values": [
+        "положительное",
+        "отрицательное"
+      ],
+      "question": "Отношение к учебе?"
+    },
+    {
+      "id": 15,
+      "property": "like_board_games",
+      "values": [
+        "да",
+        "нет"
+      ],
+      "question": "Нравится ли человеку играть в настольные игры и головоломки?"
+    },
+    {
+      "id": 16,
+      "property": "attitude_towards_art",
+      "values": [
+        "положительное",
+        "отрицательное"
+      ],
+      "question": "Отношение человека к искусству?"
+    },
+    {
+      "id": 17,
+      "property": "choose_yourself",
+      "values": [
+        "да",
+        "нет"
+      ],
+      "question": "Нравится ли человеку больше выбирать подарок самостоятельно?"
+    },
+    {
+      "id": 18,
+      "property": "interested_fashion",
+      "values": [
+        "да",
+        "нет"
+      ],
+      "question": "Увлекается ли человек модой?"
+    },
+    {
+      "id": 19,
+      "property": "gift_delivery",
+      "values": [
+        "публично",
+        "лично"
+      ],
+      "question": "Способ вручения подарка?"
+    },
+    {
+      "id": 20,
+      "property": "gift_type",
+      "values": [
+        "услуга",
+        "рукодельный",
+        "материальный"
+      ],
+      "question": "Предпочитаемый тип подарка получателя?"
+    }
+  ]
+}
