@@ -6,14 +6,22 @@ class Menu:
         self.menu_items = menu_items
         self.parent_menu = parent_menu
 
-    def display_menu(self):
+    def _display_menu(self):
         for idx, (item_name, _) in enumerate(zip(self.menu_items.keys(), self.menu_items.values()), start=1):
             print(f'{idx} - {item_name}')
         print('Нажмите ESC, чтобы выйти или вернуться на пункт выше.')
         print('Выберите пункт меню...')
 
+    def _execute_item_action(self, action):
+        if callable(action):
+            action()
+            self.run_menu()
+        elif isinstance(action, Menu):
+            action.parent_menu = self
+            action.run_menu()
+
     def run_menu(self):
-        self.display_menu()
+        self._display_menu()
         while True:
             key_event = keyboard.read_event(suppress=True)
             if key_event.event_type == keyboard.KEY_DOWN:
@@ -24,12 +32,7 @@ class Menu:
                             return
                         selected_item = list(self.menu_items.keys())[choice - 1]
                         action = self.menu_items[selected_item]
-                        if callable(action):
-                            action()
-                            self.run_menu()
-                        elif isinstance(action, Menu):
-                            action.parent_menu = self
-                            action.run_menu()
+                        self._execute_item_action(action)
                     else:
                         print("Неверный выбор. Попробуйте еще раз.")
             elif key_event.name == 'esc':

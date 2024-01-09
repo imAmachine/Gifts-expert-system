@@ -1,4 +1,4 @@
-from main import load_json, json_update
+from json_tools import load_json, json_update
 
 
 class ExpertEngine:
