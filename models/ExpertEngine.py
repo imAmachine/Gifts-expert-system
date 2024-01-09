@@ -28,7 +28,7 @@ class ExpertEngine:
                 for rule in [rule for rule in self._rules["rules"] if rule["id"] in gifts_rules_ids]:
                     gift_property = gift["properties"][rule["property"]]
                     user_answer = self._UserAnswers["answers"][rule["property"]]
-                    accepted_rules.append(eval('gift_property == user_answer'))
+                    accepted_rules.append(gift_property == user_answer)
 
                 if all(accepted_rules):
                     recommendations.append(gift)
