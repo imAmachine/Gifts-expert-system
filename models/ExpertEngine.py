@@ -49,7 +49,7 @@ class ExpertEngine:
     def remove_rule(self, id_to_remove) -> bool:
         new_rules_list = [rule for rule in self._rules["rules"] if rule["id"] != id_to_remove]
         self._rules["rules"] = new_rules_list
-        return json_update('../base/rules.json', self._rules)
+        return json_update('./base/rules.json', self._rules)
 
     def add_rule(self, rule_id: int, question: str, property_name: str, values: list) -> bool:
         new_rule = {
@@ -60,4 +60,4 @@ class ExpertEngine:
         }
 
         self._rules["rules"].append(new_rule)
-        return json_update('../base/rules.json', self._rules)
+        return json_update('./base/rules.json', self._rules)
