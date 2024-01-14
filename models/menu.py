@@ -1,6 +1,3 @@
-import keyboard
-
-
 class Menu:
     def __init__(self, title, items=None):
         self.title = title

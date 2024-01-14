@@ -12,3 +12,4 @@ class MenuItem:
             self.action()
         elif self.submenu:
             self.submenu.show_menu()
+
