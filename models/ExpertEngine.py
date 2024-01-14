@@ -10,12 +10,18 @@ class ExpertEngine:
     def ask_user(self) -> None:
         self._UserAnswers = dict()
         for rule in self._rules["rules"]:
-            ans = input(f'{rule["question"]}\n')
-            if ans in rule["values"]:
-                self._UserAnswers.update({rule["property"]: ans})
+            while True:
+                question = rule["question"]
+                values = '\n'.join([f'{idx + 1} - {val}' for idx, val in enumerate(rule["values"])])
+                print(question + '\n' + values)
 
-    def load_ans_json(self, path):
-        self._UserAnswers = load_json(path)
+                ans = int(input())
+                if 0 < ans <= len(rule["values"]):
+                    if rule["values"][ans-1] in rule["values"]:
+                        self._UserAnswers.update({rule["property"]: ans})
+                        break
+                else:
+                    print('Такого пункта не существует, попробуйте ещё раз')
 
     def get_recommendations(self) -> list:
         recommendations = []
