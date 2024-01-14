@@ -18,7 +18,7 @@ class ExpertEngine:
                 ans = int(input())
                 if 0 < ans <= len(rule["values"]):
                     if rule["values"][ans-1] in rule["values"]:
-                        self._UserAnswers.update({rule["property"]: ans})
+                        self._UserAnswers.update({rule["property"]: rule["values"][ans-1]})
                         break
                 else:
                     print('Такого пункта не существует, попробуйте ещё раз')
@@ -33,12 +33,11 @@ class ExpertEngine:
 
                 for rule in [rule for rule in self._rules["rules"] if rule["id"] in gifts_rules_ids]:
                     gift_property = gift["properties"][rule["property"]]
-                    user_answer = self._UserAnswers["answers"][rule["property"]]
+                    user_answer = self._UserAnswers[rule["property"]]
                     accepted_rules.append(gift_property == user_answer)
 
-                if all(accepted_rules):
+                if any(accepted_rules):
                     recommendations.append(gift)
-
         return recommendations
 
     def get_rules(self) -> list:
