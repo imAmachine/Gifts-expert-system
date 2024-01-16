@@ -25,7 +25,7 @@ class Recommendations(list):
                 rec_item = RecommendationItem(gift["name"], len(rules_passed), len(gift_properties))
                 self.append(rec_item)
 
-    def get_recommendations_table(self):
+    def get_table(self):
         result_str_table = ''
         low_recommendation = [gift for gift in self if gift.rec_lvl == 0]
         med_recommendation = [gift for gift in self if gift.rec_lvl == 1]

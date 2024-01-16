@@ -15,6 +15,5 @@ class UserMenu(Menu):
 
     def _show_recommendations(self):
         """метод взаимодействия с движком ЭС, который выводит рекомендации для пользователя по проведённому опросу"""
-        result = '\nВот список вещей, которые можно рассмотреть в качестве подарка:\n'
         recommendations = self.engine.get_recommendations()
-        print(recommendations.get_recommendations_table())
+        print(recommendations.get_table())

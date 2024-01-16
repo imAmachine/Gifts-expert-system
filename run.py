@@ -15,8 +15,8 @@ def main():
 
     # Main menu
     main_menu = Menu('ГЛАВНОЕ МЕНЮ')
-    main_menu.add_item(expert_menu_item)
     main_menu.add_item(user_menu_item)
+    main_menu.add_item(expert_menu_item)
 
     # Start Menu
     main_menu.show_menu()
