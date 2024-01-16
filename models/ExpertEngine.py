@@ -1,4 +1,5 @@
-from tools.json_tools import json_update
+from models.Recommendations import Recommendations
+from tools.json_tools import json_update, load_json
 
 
 class ExpertEngine:
@@ -8,8 +9,9 @@ class ExpertEngine:
         self._rules = rules
 
     def ask_user(self) -> None:
+        # self._UserAnswers = load_json(r"F:\Downloads\ans.json")
         self._UserAnswers = dict()
-        for rule in self._rules["rules"]:
+        for rule in self._rules:
             while True:
                 question = rule["question"]
                 values = '\n'.join([f'{idx + 1} - {val}' for idx, val in enumerate(rule["values"])])
@@ -24,25 +26,15 @@ class ExpertEngine:
                     print('Такого пункта не существует, попробуйте ещё раз')
 
     def get_recommendations(self) -> list:
-        recommendations = []
-
         if self._UserAnswers:
-            for gift in self._gifts["gifts"]:
-                accepted_rules = []
-                gifts_rules_ids = gift["rules_id"]
-
-                for rule in [rule for rule in self._rules["rules"] if rule["id"] in gifts_rules_ids]:
-                    gift_property = gift["properties"][rule["property"]]
-                    user_answer = self._UserAnswers[rule["property"]]
-                    accepted_rules.append(gift_property == user_answer)
-
-                if any(accepted_rules):
-                    recommendations.append(gift)
-        return recommendations
+            return Recommendations(self._rules, self._gifts, self._UserAnswers)
+        else:
+            return None
 
     def get_rules(self) -> list:
+        """метод для получения списка правил в базе знаний"""
         result = list()
-        for rule in self._rules["rules"]:
+        for rule in self._rules:
             rule_id = rule['id']
             property_name = rule['property']
             values = rule['values']
@@ -51,12 +43,14 @@ class ExpertEngine:
             result.append(rule_line)
         return result
 
-    def remove_rule(self, id_to_remove) -> bool:
-        new_rules_list = [rule for rule in self._rules["rules"] if rule["id"] != id_to_remove]
-        self._rules["rules"] = new_rules_list
-        return json_update('./base/rules.json', self._rules)
+    def remove_rule(self, rules_path, rule_id) -> bool:
+        """Метод для удаления правила по id"""
+        new_rules_list = [rule for rule in self._rules if rule["id"] != rule_id]
+        self._rules = new_rules_list
+        return json_update(rules_path, self._rules)
 
-    def add_rule(self, rule_id: int, question: str, property_name: str, values: list) -> bool:
+    def add_rule(self, rules_path, rule_id: int, question: str, property_name: str, values: list) -> bool:
+        """метод для добавления нового правила"""
         new_rule = {
             "id": rule_id,
             "property": property_name,
@@ -64,5 +58,5 @@ class ExpertEngine:
             "question": question
         }
 
-        self._rules["rules"].append(new_rule)
-        return json_update('./base/rules.json', self._rules)
+        self._rules.append(new_rule)
+        return json_update(rules_path, self._rules)

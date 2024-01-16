@@ -1,4 +1,4 @@
-from models.CLI.MenuItem import MenuItem
+from models.MenuItem import MenuItem
 from models.menu import Menu
 
 
@@ -10,11 +10,11 @@ class UserMenu(Menu):
         self.add_item(MenuItem("Получить рекомендации", action=self._show_recommendations))
 
     def _run_user_ask_method(self):
+        """метод взаимодействия с движком ЭС, который запускает опрос пользователя"""
         self.engine.ask_user()
 
     def _show_recommendations(self):
-        result = '\nВот список подарков, которые можно рассмотреть в качестве подарка:\n'
+        """метод взаимодействия с движком ЭС, который выводит рекомендации для пользователя по проведённому опросу"""
+        result = '\nВот список вещей, которые можно рассмотреть в качестве подарка:\n'
         recommendations = self.engine.get_recommendations()
-        for idx, rec in enumerate(recommendations):
-            result += f'{idx + 1} - {rec["name"]}\n'
-        print(result)
+        print(recommendations.get_recommendations_table())

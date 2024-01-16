@@ -1,8 +1,8 @@
 from models.CLI.ExpertMenu import ExpertMenu
-from models.CLI.MenuItem import MenuItem
 from models.CLI.UserMenu import UserMenu
-from models.menu import Menu
 from models.ExpertEngine import ExpertEngine
+from models.MenuItem import MenuItem
+from models.menu import Menu
 from tools.json_tools import load_json
 
 
