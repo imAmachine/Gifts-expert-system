@@ -1,5 +1,6 @@
 from models.MenuItem import MenuItem
 from models.menu import Menu
+from tools.data_format import get_table_str
 
 
 class ExpertMenu(Menu):
@@ -11,7 +12,17 @@ class ExpertMenu(Menu):
         self.add_item(MenuItem("Удалить правило по id", action=self._remove_rule))
 
     def _struct_rules_output(self):
-        print('id - property - values - question\n' + '\n'.join(self.engine.get_rules()))
+        rules = self.engine.get_rules()
+
+        id = [str(rule['id']) for rule in rules]
+        property = [rule['property'] for rule in rules]
+        values = [', '.join(rule['values']) for rule in rules]
+        question = [rule['question'] for rule in rules]
+
+        data = [id, property, values, question]
+        headers = ['ID', 'Свойство', 'Значения', 'Вопрос']
+        table_title = 'БАЗА ЗНАНИЙ'
+        print(get_table_str(table_title, headers, data))
 
     def _add_new_rule(self):
         rule_id = input('Введите rule_id: ')

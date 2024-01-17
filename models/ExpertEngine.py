@@ -35,15 +35,8 @@ class ExpertEngine:
 
     def get_rules(self) -> list:
         """метод для получения списка правил в базе знаний"""
-        result = list()
-        for rule in self._rules:
-            rule_id = rule['id']
-            property_name = rule['property']
-            values = rule['values']
-            question = rule['question']
-            rule_line = f'{rule_id} - {property_name} - {values} - {question}'
-            result.append(rule_line)
-        return result
+
+        return self._rules
 
     def remove_rule(self, rules_path, rule_id) -> bool:
         """Метод для удаления правила по id"""

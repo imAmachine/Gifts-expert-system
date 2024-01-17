@@ -1,5 +1,6 @@
 from models.MenuItem import MenuItem
 from models.menu import Menu
+from tools.data_format import get_table_str
 
 
 class UserMenu(Menu):
@@ -20,4 +21,11 @@ class UserMenu(Menu):
     def _show_recommendations(self):
         """метод взаимодействия с движком ЭС, который выводит рекомендации для пользователя по проведённому опросу"""
         recommendations = self.engine.get_recommendations()
-        print(recommendations.get_table())
+        low_recommendation = [gift.name for gift in recommendations if gift.rec_lvl == 0]
+        med_recommendation = [gift.name for gift in recommendations if gift.rec_lvl == 1]
+        high_recommendation = [gift.name for gift in recommendations if gift.rec_lvl == 2]
+
+        data = [high_recommendation, med_recommendation, low_recommendation]
+        headers = ['Подходят', 'Подходят средне', 'Подходят слабо']
+        table_title = 'РЕКОМЕНДАЦИИ ПО РЕЗУЛЬТАТУ ОПРОСА'
+        print(get_table_str(table_title, headers, data))
