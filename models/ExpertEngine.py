@@ -14,7 +14,7 @@ class ExpertEngine:
             while True:
                 question = rule["question"]
                 values = '\n'.join([f'{idx + 1} - {val}' for idx, val in enumerate(rule["values"])])
-                print(question + '\n' + values)
+                print('\n' + question + '\n' + values)
 
                 ans = int(input())
                 if 0 < ans <= len(rule["values"]):
