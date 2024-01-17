@@ -8,10 +8,11 @@ from tools.json_tools import load_json
 
 def main():
     engine = ExpertEngine(rules=load_json('base/rules.json'), gifts=load_json('base/gifts.json'))
+    answers_path = 'base/ans.json'
 
     # Menu items
     expert_menu_item = MenuItem('Эксперт', ExpertMenu(engine).show_menu)
-    user_menu_item = MenuItem('Пользователь', UserMenu(engine).show_menu)
+    user_menu_item = MenuItem('Пользователь', UserMenu(engine, answers_path).show_menu)
 
     # Main menu
     main_menu = Menu('ГЛАВНОЕ МЕНЮ')

@@ -9,7 +9,6 @@ class ExpertEngine:
         self._rules = rules
 
     def ask_user(self) -> None:
-        # self._UserAnswers = load_json(r"F:\Downloads\ans.json")
         self._UserAnswers = dict()
         for rule in self._rules:
             while True:
@@ -24,6 +23,9 @@ class ExpertEngine:
                         break
                 else:
                     print('Такого пункта не существует, попробуйте ещё раз')
+
+    def load_ans_from_json(self, path):
+        self._UserAnswers = load_json(path)
 
     def get_recommendations(self) -> list:
         if self._UserAnswers:
